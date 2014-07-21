@@ -27,6 +27,6 @@ EXPOSE 5228/udp
 EXPOSE 5229
 EXPOSE 5229/udp
 
-VOLUME ['/var/log/system_logs']
+VOLUME ["/var/log/system_logs"]
 
 CMD supervisord -n
