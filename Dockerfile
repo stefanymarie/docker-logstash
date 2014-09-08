@@ -19,6 +19,8 @@ RUN mv elasticsearch-1.1.1 /opt/elasticsearch
 ADD logstash-dashboard.conf /opt/logstash/logstash-dashboard.conf
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+RUN mkdir /root/backups
+
 EXPOSE 514
 EXPOSE 9200
 EXPOSE 9300
@@ -27,6 +29,6 @@ EXPOSE 5228/udp
 EXPOSE 5229
 EXPOSE 5229/udp
 
-VOLUME ["/var/log/system_logs"]
+VOLUME ["/var/log/system_logs", "/root/backups"]
 
 CMD supervisord -n
