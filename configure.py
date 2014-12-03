@@ -17,25 +17,13 @@ input {
   }
 }
 output {
-  if [type] == "dashboard" {
-    file {
-      codec => json_lines
-      message_format => "[DASHBOARD[%{severity}] %{@timestamp} %{host}: %{message}"
-      path => "/var/log/system_logs/dashboard-log.log"
-    }
-    elasticsearch {
-      host => localhost
-      index => "dashboard_%{+dd.MM.YY}"
-    }
-  } else if [type] == "system" {
-    file {
-      codec => json_lines
-      path => "/var/log/system_logs/%{host}/%{program}.log"
-    }
-    elasticsearch {
-      host => $elasticsearch_host
-      index => "%{host}_%{program}_%{+dd.MM.YY}"
-    }
+  file {
+    codec => json_lines
+    path => "/var/log/system_logs/%{host}/%{program}.log"
+  }
+  elasticsearch {
+    host => "$elasticsearch_host"
+    index => "%{host}_%{program}_%{+dd.MM.YY}"
   }
 }
 """
