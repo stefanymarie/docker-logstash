@@ -16,4 +16,6 @@ EXPOSE 514
 
 VOLUME ['/var/log/system_logs']
 
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 CMD supervisord -n
