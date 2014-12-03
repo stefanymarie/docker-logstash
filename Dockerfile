@@ -13,15 +13,7 @@ RUN tar zxvf logstash-1.4.2.tar.gz
 RUN mv logstash-1.4.2 /opt/logstash
 
 EXPOSE 514
-EXPOSE 9300
-EXPOSE 5228
-EXPOSE 5229
 
 VOLUME ['/var/log/system_logs']
 
-ADD configure.py /configure.py
-ADD run /usr/bin/run
-RUN chmod +x /configure.py
-RUN chmod +x /usr/bin/run
-
-CMD /usr/bin/run
+CMD supervisord -n
