@@ -4,16 +4,9 @@ from string import Template
 import os
 tmpl = """
 input {
-  udp {
-    host => "0.0.0.0"
-    port => 5228
-    codec => json_lines
-    type => "dashboard"
-  }
   syslog {
     host => "0.0.0.0"
     port => 5229
-    type => "system"
   }
 }
 output {
